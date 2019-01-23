@@ -23,5 +23,5 @@ messages = queue_client.get_receiver()
 for message in messages:
     print(message)
     with open(config['output_file'], 'w') as output_file:
-        output_file.write(message)
+        output_file.write(str(message))
     message.complete()
