@@ -14,11 +14,11 @@ config_file = open('config.yml', 'r')
 config = yaml.safe_load(config_file)
 
 bus_service = ServiceBusClient(
-    service_namespace=config.namespace,
-    shared_access_key_name=config.shared_access_key_name,
-    shared_access_key_value=config.shared_access_key_value)
+    service_namespace=config['namespace'],
+    shared_access_key_name=config['shared_access_key_name'],
+    shared_access_key_value=config['shared_access_key_value'])
 
-queue_client = bus_service.get_queue(config.queue_name)
+queue_client = bus_service.get_queue(config['queue_name'])
 
 
 proc = subprocess.Popen(['./simple-temp-readout', '/dev/hidraw1', '0x01', '0x80', '0x33', '0x01', '0x00', '0x00', '0x00', '0x00'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
