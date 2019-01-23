@@ -4,9 +4,10 @@ Push a simple temperature sensor reading into an Azure Service Bus Queue
 ## Requirements
 
 Python 3.x
+
 `pip3 install azure-servicebus`
 
-Designed to work with [simple-temp-readout](https://github.com/PeterUpfold/TEMPered) and a TEMPer thermometer as produced by
+Designed to work with [simple-temp-readout (./utils)](https://github.com/PeterUpfold/TEMPered) and a TEMPer thermometer as produced by
 RDing Technology and sold under the name PCsensor.
 
 ## Bootstrapping
