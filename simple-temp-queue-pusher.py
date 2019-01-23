@@ -6,14 +6,14 @@
 # Licensed under the Apache 2.0 Licence.
 
 
-from azure.servicebus import ServiceBusClient, Message, Queue
+from azure.servicebus import ServiceBusClient
 import yaml
 import subprocess
 
 config_file = open('config.yml', 'r')
 config = yaml.safe_load(config_file)
 
-bus_service = ServiceBusService(
+bus_service = ServiceBusClient(
     service_namespace=config.namespace,
     shared_access_key_name=config.shared_access_key_name,
     shared_access_key_value=config.shared_access_key_value)
