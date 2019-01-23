@@ -22,4 +22,6 @@ queue_client = bus_service.get_queue(config['queue_name'])
 messages = queue_client.get_receiver()
 for message in messages:
     print(message)
+    with output_file = open(config['output_file'], 'w'):
+        output_file.write(message)
     message.complete()
