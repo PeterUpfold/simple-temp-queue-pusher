@@ -24,4 +24,5 @@ queue_client = bus_service.get_queue(config['queue_name'])
 proc = subprocess.Popen(['./simple-temp-readout', '/dev/hidraw1', '0x01', '0x80', '0x33', '0x01', '0x00', '0x00', '0x00', '0x00'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 output, err = proc.communicate()
 
-queue_client.send(Message(output))
+if len(output) > 0:
+	queue_client.send(Message(output))
