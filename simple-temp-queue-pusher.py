@@ -28,5 +28,5 @@ output, err = proc.communicate()
 
 
 if len(output) > 0:
-	message_object = { 'time': datetime.now().isoformat(), 'temp': output }
+	message_object = { 'time': datetime.now().isoformat(), 'temp': str(output) }
 	queue_client.send(Message(json.dumps(message_object)))
