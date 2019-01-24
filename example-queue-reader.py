@@ -22,9 +22,9 @@ queue_client = bus_service.get_queue(config['queue_name'])
 messages = queue_client.get_receiver()
 for message in messages:
     if len(message) > 0:
-	    print(message)
+            print(message)
 	    with open(config['output_file'], 'w') as output_file:
-		output_file.write(str(message))
+              output_file.write(str(message))
     else:
             print('Zero-length message')
     message.complete()
