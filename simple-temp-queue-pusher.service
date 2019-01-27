@@ -1,0 +1,13 @@
+[Unit]
+Description=Push a simple temperature sensor reading into an Azure Service Bus Queue
+After=network.target
+
+[Service]
+Type=simple
+User=root # because we need to /dev/hidraw
+
+ExecStart=/home/peter/build/simple-temp-queue-pusher/simple-temp-queue-pusher.py
+WorkingDirectory=/home/peter/build/simple-temp-queue-pusher
+
+[Install]
+WantedBy=multi-user.target
