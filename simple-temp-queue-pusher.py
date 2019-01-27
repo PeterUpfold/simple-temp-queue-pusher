@@ -11,6 +11,7 @@ import yaml
 import subprocess
 import json
 from datetime import datetime
+from time import sleep
 
 config_file = open('config.yml', 'r')
 config = yaml.safe_load(config_file)
@@ -23,10 +24,16 @@ bus_service = ServiceBusClient(
 queue_client = bus_service.get_queue(config['queue_name'])
 
 
-proc = subprocess.Popen(['./simple-temp-readout', '/dev/hidraw1', '0x01', '0x80', '0x33', '0x01', '0x00', '0x00', '0x00', '0x00'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-output, err = proc.communicate()
+while True:
+	try:
+		proc = subprocess.Popen(['./simple-temp-readout', '/dev/hidraw1', '0x01', '0x80', '0x33', '0x01', '0x00', '0x00', '0x00', '0x00'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+		output, err = proc.communicate()
 
 
-if len(output) > 0:
-	message_object = { 'time': datetime.now().isoformat(), 'temp': output.decode('ascii').strip() }
-	queue_client.send(Message(json.dumps(message_object)))
+		if len(output) > 0:
+			message_object = { 'time': datetime.now().isoformat(), 'temp': output.decode('ascii').strip() }
+			queue_client.send(Message(json.dumps(message_object)))
+	except:
+		pass
+
+	sleep(60)
