@@ -17,6 +17,9 @@ from time import sleep
 config_file = open('config.yml', 'r')
 config = yaml.safe_load(config_file)
 
+# sleep to be safe that everything is ready
+sleep(60)
+
 bus_service = ServiceBusClient(
     service_namespace=config['namespace'],
     shared_access_key_name=config['shared_access_key_name'],
