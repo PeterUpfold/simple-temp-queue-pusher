@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # example-queue-reader
 # Simple script to test receiving events through the queue
 #
