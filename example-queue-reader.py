@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # example-queue-reader
-# Simple script to test receiving events through the queue
+# Simple script to test receiving events through the queue and dump the most recent event to
+# a file on disk.
 #
 # Copyright 2019 Peter Upfold
 #

@@ -1,0 +1,20 @@
+#
+# Systemd service file for the example queue reader which reads
+# events from the queue and dumps them on disk. Will likely require
+# modification in your environment!
+#
+[Unit]
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/home/peterupfold/simple-temp-queue-pusher/example-queue-reader.py
+Restart=always
+RestartSec=10
+WorkingDirectory=/home/peterupfold/simple-temp-queue-pusher
+User=peterupfold
+Group=peterupfold
+
+[Install]
+WantedBy=default.target
+
