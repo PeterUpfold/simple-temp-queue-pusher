@@ -1,0 +1,3 @@
+[submodule "lib/PUStatusReporter"]
+	path = lib/PUStatusReporter
+	url = https://github.com/PeterUpfold/PU-Status-Reporter-python3.git
