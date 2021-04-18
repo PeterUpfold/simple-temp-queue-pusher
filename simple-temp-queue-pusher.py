@@ -7,7 +7,7 @@
 # Licensed under the Apache 2.0 Licence.
 
 
-from azure.servicebus import ServiceBusClient, _Message
+#from azure.servicebus import ServiceBusClient, _Message
 import yaml
 import subprocess
 import json
@@ -28,12 +28,12 @@ config = yaml.safe_load(config_file)
 
 logging.basicConfig(level=logging.INFO)
 
-bus_service = ServiceBusClient(
-    service_namespace=config['namespace'],
-    shared_access_key_name=config['shared_access_key_name'],
-    shared_access_key_value=config['shared_access_key_value'])
+# bus_service = ServiceBusClient(
+#     service_namespace=config['namespace'],
+#     shared_access_key_name=config['shared_access_key_name'],
+#     shared_access_key_value=config['shared_access_key_value'])
 
-queue_client = bus_service.get_queue(config['queue_name'])
+# queue_client = bus_service.get_queue(config['queue_name'])
 
 
 while True:
@@ -79,8 +79,9 @@ while True:
 			logging.error(f'parse fail? {e}')
 
 		if len(output) > 0:
-			message_object = { 'time': datetime.now().isoformat(), 'temp': output.decode('ascii').strip() }
-			queue_client.send(Message(json.dumps(message_object)))
+			pass
+			# message_object = { 'time': datetime.now().isoformat(), 'temp': output.decode('ascii').strip() }
+			# queue_client.send(Message(json.dumps(message_object)))
 	except Exception as outer_e:
 		logging.error(f'Outer loop failed: {outer_e}')
 
